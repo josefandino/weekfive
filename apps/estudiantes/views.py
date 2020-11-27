@@ -29,7 +29,7 @@ class StudentView(View):
    template_name = "students/listado.html"
 
 class StudentAPIView(generics.ListCreateAPIView):
-   queriset = Student.objects.all()
-   serializers_class = StudentSerializers
+   queryset = Student.objects.all()
+   serializer_class = StudentSerializers
 
 

@@ -1,7 +1,6 @@
 from django.db import models
 
 class Student(models.Model):
-   # objects = None
    nombre = models.CharField(max_length=120, blank=True, null=False)
    apellidos = models.CharField(max_length=120, blank=True, null=False)
    telefono = models.CharField(max_length=20, blank=True, null=False)
