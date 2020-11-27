@@ -14,4 +14,4 @@ class Materia(models.Model):
       verbose_name_plural = 'Materias'
 
    def __str__(self):
-      return '{0},{1}'.format(self.apellidos, self.nombre)
+      return self.name

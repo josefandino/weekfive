@@ -5,7 +5,7 @@ class Teacher(models.Model):
    last_name = models.CharField(max_length=120, blank=True, null=False)
    phone = models.CharField(max_length=20, blank=True, null=False)
    email = models.EmailField(max_length=120, blank=True, null=False)
-   activo = models.BooleanField(default=False)
+   active = models.BooleanField(default=False)
 
    class Meta:
       ordering = ['name']

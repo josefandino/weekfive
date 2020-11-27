@@ -7,8 +7,6 @@ class Student(models.Model):
    email = models.EmailField('Email', max_length=120, blank=True, null=False)
    activo = models.BooleanField(default=False)
 
-   
-
    class Meta:
       ordering = ['nombre']
       verbose_name = 'Student'
