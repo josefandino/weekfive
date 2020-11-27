@@ -1,6 +1,7 @@
 from django.core.validators import MinLengthValidator
 from django.db import models
 
+
 class Materia(models.Model):
    code = models.CharField(max_length=20)
    name = models.CharField(max_length=150, validators=[MinLengthValidator(4)])
