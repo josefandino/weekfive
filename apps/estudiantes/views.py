@@ -32,4 +32,10 @@ class StudentAPIView(generics.ListCreateAPIView):
    queryset = Student.objects.all()
    serializer_class = StudentSerializers
 
+   def list(self, request):
+      queryset = self.get_queryset()
+      serializer = StudentSerializers(queryset, many=True)
+      return Response(serializer.data)
+      
+
 
