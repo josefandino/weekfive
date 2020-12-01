@@ -10,32 +10,32 @@ from .serializers import StudentSerializers
 from .models import Student
 
 
-# @api_view(['GET', 'POST', 'DELETE'])
-# def student(request):
-#    if request.method == 'GET':
-#       students = Student.objects.all()
-#       serialized = StudentSerializers(students, many=True)
-#       return Response(status=HTTP_200_OK, data=serialized.data)
+@api_view(['GET', 'POST', 'DELETE'])
+def student(request):
+   if request.method == 'GET':
+      students = Student.objects.all()
+      serialized = StudentSerializers(students, many=True)
+      return Response(status=HTTP_200_OK, data=serialized.data)
    
-#    if request.method == 'POST':
-#       students = StudentSerializers(data=request.data)
-#       if student.is_valid():
-#          return Response(status=HTTP_201_CREATED)
-#       else:
-#          return Response(status=HTTP_400_BAD_REQUEST, data=student.errors)
+   if request.method == 'POST':
+      students = StudentSerializers(data=request.data)
+      if student.is_valid():
+         return Response(status=HTTP_201_CREATED)
+      else:
+         return Response(status=HTTP_400_BAD_REQUEST, data=student.errors)
 
 class StudentView(View):
    model = Student
    template_name = "students/listado.html"
 
-class StudentAPIView(generics.ListCreateAPIView):
-   queryset = Student.objects.all()
-   serializer_class = StudentSerializers
+# class StudentAPIView(generics.ListCreateAPIView):
+#    queryset = Student.objects.all()
+#    serializer_class = StudentSerializers
 
-   def list(self, request):
-      queryset = self.get_queryset()
-      serializer = StudentSerializers(queryset, many=True)
-      return Response(serializer.data)
+#    def list(self, request):
+#       queryset = self.get_queryset()
+#       serializer = StudentSerializers(queryset, many=True)
+#       return Response(serializer.data)
       
 
 
