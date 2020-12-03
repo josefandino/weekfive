@@ -10,41 +10,19 @@ from .serializers import StudentSerializers
 from .models import Student
 
 
-@api_view(['GET', 'POST', 'DELETE'])
-def student(request):
-<<<<<<< HEAD
-   if request.method == 'GET':
-      students = Student.objects.all()
-      serialized = StudentSerializers(students, many=True)
-      return Response(status=HTTP_200_OK, data=serialized.data)
-   
-   if request.method == 'POST':
-      students = StudentSerializers(data=request.data)
-      if student.is_valid():
-         return Response(status=HTTP_201_CREATED)
-      else:
-         return Response(status=HTTP_400_BAD_REQUEST, data=student.errors)
+# @api_view(['GET', 'POST', 'DELETE'])
+# def student(request):
+#     if request.method == 'GET':
+#         students = Student.objects.all()
+#         serialized = StudentSerializers(students, many=True)
+#         return Response(status=HTTP_200_OK, data=serialized.data)
 
-class StudentView(View):
-   model = Student
-   template_name = "students/listado.html"
-
-# class StudentAPIView(generics.ListCreateAPIView):
-#    queryset = Student.objects.all()
-#    serializer_class = StudentSerializers
-
-=======
-    if request.method == 'GET':
-        students = Student.objects.all()
-        serialized = StudentSerializers(students, many=True)
-        return Response(status=HTTP_200_OK, data=serialized.data)
-
-    if request.method == 'POST':
-        students = StudentSerializers(data=request.data)
-        if student.is_valid():
-            return Response(status=HTTP_201_CREATED)
-        else:
-            return Response(status=HTTP_400_BAD_REQUEST, data=students.errors)
+#     if request.method == 'POST':
+#         students = StudentSerializers(data=request.data)
+#         if student.is_valid():
+#             return Response(status=HTTP_201_CREATED)
+#         else:
+#             return Response(status=HTTP_400_BAD_REQUEST, data=students.errors)
 
 # class StudentView(View):
 #    model = Student
@@ -54,16 +32,16 @@ class StudentView(View):
 #    queryset = Student.objects.all()
 #    serializer_class = StudentSerializers
 #
->>>>>>> 180eacaaae0ccb5c5c460a8cb3cc7334885dec7b
 #    def list(self, request):
 #       queryset = self.get_queryset()
 #       serializer = StudentSerializers(queryset, many=True)
 #       return Response(serializer.data)
-<<<<<<< HEAD
-      
 
+from rest_framework import viewsets
 
-=======
-#
-#
->>>>>>> 180eacaaae0ccb5c5c460a8cb3cc7334885dec7b
+from .serializers import StudentSerializers
+from .models import Student
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializers
